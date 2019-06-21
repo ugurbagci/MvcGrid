@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+@using GridMvc.Html
+@model IEnumerable<MVCGrid.Models.Category>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/gridmvc.min.js"></script>
+
+
+<div class="row" style="margin-top:50px">
+    <div class="panel panel-default">
+        <div class="panel-boday">
+            <div class="col-lg-12">
+                @Html.Grid(Model).Columns(c =>
+           {
+               c.Add(ct => ct.CategoryID).Titled("Kategori ID").Encoded(false).Sanitized(false);
+               c.Add(ct => ct.CategoryName).Titled("Kategori Adı").Sortable(true).Encoded(false).Sanitized(false);
+               c.Add(ct => ct.Description).Titled("Açıklama").Sortable(true).Encoded(false).Sanitized(false);
+           }).WithPaging(4).Selectable(true);
+            </div>
+        </div>
+    </div>
+</div>

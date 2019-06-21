@@ -1,0 +1,29 @@
+﻿
+@{
+    Layout = null;
+}
+
+@using GridMvc.Html
+@model IEnumerable<MVCGrid.Models.Employee>
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap-grid.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.0.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/gridmvc.js"></script>
+
+<div class="row" style="margin-top:50px">
+    <div class="panel panel-default">
+        <div class="panel-boday">
+            <div class="col-lg-12">
+                @Html.Grid(Model).Columns(c =>
+           {
+               c.Add(ct => ct.EmployeeID).Titled("Employee ID").Encoded(false).Sanitized(false);
+               c.Add(ct => ct.FirstName).Titled("Employee Adı").Sortable(true).Encoded(false).Sanitized(false);
+               c.Add(ct => ct.LastName).Titled("Employee Soyadı").Sortable(true).Encoded(false).Sanitized(false);
+           }).WithPaging(4).Selectable(true);
+            </div>
+        </div>
+    </div>
+</div>
+
